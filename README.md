@@ -8,6 +8,7 @@ This project aims to address the **Problematic Internet Use** challenge provided
 ## Project Structure
 
 Child Mind Institute/
+
 ├─ configs/  
 │  ├─ config.py  
 ├─ models/  
