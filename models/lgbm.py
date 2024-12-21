@@ -1,8 +1,8 @@
 from lightgbm import LGBMRegressor
 from sklearn.impute import SimpleImputer, KNNImputer
 from sklearn.pipeline import Pipeline
+import config
 
-SEED = 42
 imputer = SimpleImputer(strategy='median')
 
 params = {
@@ -25,7 +25,7 @@ def lgbm():
         ('imputer', imputer),
         ('regressor', LGBMRegressor(
             n_estimators=100,
-            random_state=SEED,
+            random_state=config.SEED,
             n_jobs=-1,
             **params
         ))

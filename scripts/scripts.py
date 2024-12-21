@@ -19,7 +19,6 @@ from keras.models import Model
 from keras.layers import Input, Dense
 from keras.optimizers import Adam
 
-
 from colorama import Fore, Style
 from IPython.display import clear_output
 import warnings
@@ -37,10 +36,11 @@ from models.xgb import xgb
 from models.random_forest import random_forest
 from train import TrainML
 
+import config
 
-train_ds = pd.read_csv('/kaggle/input/child-mind-institute-problematic-internet-use/train.csv')
-test_ds = pd.read_csv('/kaggle/input/child-mind-institute-problematic-internet-use/test.csv')
-data_dictionary = pd.read_csv('/kaggle/input/child-mind-institute-problematic-internet-use/data_dictionary.csv')
+train_ds = pd.read_csv(config.TRAIN_DATA_PATH)
+test_ds = pd.read_csv(config.TEST_DATA_PATH)
+data_dictionary = pd.read_csv(config.DICTIONARY_PATH)
 
 train_ds
 test_ds
@@ -65,8 +65,6 @@ train_ds_usable.info()
 PCIAT_cols = [val for val in train_ds_usable.columns[train_ds_usable.columns.str.contains('PCIAT')]]
 print('Number of PCIAT features = ' , len(PCIAT_cols))
 
-SEED = 42
-n_splits = 5
 
 def process_file(filename, dirname):
     df = pd.read_parquet(os.path.join(dirname, filename, 'part-0.parquet'))

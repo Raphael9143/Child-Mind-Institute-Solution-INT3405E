@@ -1,19 +1,20 @@
 from models.kappa import quadratic_weighted_kappa, threshold_Rounder, evaluate_predictions
+import config
 
 def TrainML(model_class, test_data):
     X = train.drop(['sii'], axis=1)
     y = train['sii']
 
-    SKF = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=SEED)
+    SKF = StratifiedKFold(n_splits=config.n_splits, shuffle=True, random_state=config.SEED)
     
     train_S = []
     test_S = []
     
     oof_non_rounded = np.zeros(len(y), dtype=float) 
     oof_rounded = np.zeros(len(y), dtype=int) 
-    test_preds = np.zeros((len(test_data), n_splits))
+    test_preds = np.zeros((len(test_data), config.n_splits))
 
-    for fold, (train_idx, test_idx) in enumerate(tqdm(SKF.split(X, y), desc="Training Folds", total=n_splits)):
+    for fold, (train_idx, test_idx) in enumerate(tqdm(SKF.split(X, y), desc="Training Folds", total=config.n_splits)):
         X_train, X_val = X.iloc[train_idx], X.iloc[test_idx]
         y_train, y_val = y.iloc[train_idx], y.iloc[test_idx]
 
