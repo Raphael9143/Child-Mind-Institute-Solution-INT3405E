@@ -91,14 +91,16 @@ The following models are implemented in this project:
 
 ### Optimized QWK
    - Refers to the QWK score obtained after optimizing thresholds or other hyperparameters to maximize the metric.
-   - Low QWK Validation score (0.3429): The performance on the test set is much lower than the training set. This is a clear sign of overfitting
-   - Optimized QWK SCORE (0.433): After optimizing the threshold, the QWK score increased slightly compared to Validation QWK, showing that optimizing the threshold has partially improved the effectiveness.
+
 #### Version 0.43
    - High Train QWK score (0.9471): This shows that the model works very well on the training set, However, this can also signal the risk of overfitting.
-   - Validation QWK score increased slightly (0.3514):  showing that the model generalizes better and has less overfitting.
-   - Optimized QWK SCORE (0.477): After optimizing the threshold, QWK score increased compared to Validation QWK, and this version has a higher optimization score than the previous version (0.477 > 0.433).
+   - Low QWK Validation score (0.3429): The performance on the test set is much lower than the training set. This is a clear sign of overfitting
+   - Optimized QWK SCORE (0.433): After optimizing the threshold, the QWK score increased slightly compared to Validation QWK, showing that optimizing the threshold has partially improved the effectiveness.
+
 #### Version 0.433
    - Train QWK score decreased significantly (0.4119): The model is less focused on the training set because LightGBM integrates regularization (L1, L2), which helps reduce overfitting.
+   - Validation QWK score increased slightly (0.3514):  showing that the model generalizes better and has less overfitting.
+   - Optimized QWK SCORE (0.477): After optimizing the threshold, QWK score increased compared to Validation QWK, and this version has a higher optimization score than the previous version (0.477 > 0.433).'
 #### Version 0.443 & 0.45
    - Reduced training time (about 6 minutes) thanks to autoencoder. The autoencoder could have reduced the dimensionality of the input data or extracted useful features, helping to train the model faster.
    - Slightly increased model performance on the training set, showing that autoencoder helps the model learn better on known data without losing its ability to fit.
